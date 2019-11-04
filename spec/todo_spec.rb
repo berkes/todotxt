@@ -25,14 +25,15 @@ describe Todotxt::Todo do
     expect(todo.done).to be_truthy
   end
 
-  it 'parses a due date' do
-    todo = Todotxt::Todo.new '(A) x 2012-12-12 an item +project1 +project2 @context1 @context2'
+  it 'parses a due: date' do
+    # prio state completion-date creation-date description ... key:value
+    todo = Todotxt::Todo.new '(A) x 2012-11-22 2011-11-12 an item due:2012-12-12 +project1 +project2 @context1 @context2'
     expect(todo.due).to eql(Chronic.parse('12 December 2012').to_date)
 
-    todo = Todotxt::Todo.new '2012-1-2 an item +project1 +project2 @context1 @context2'
+    todo = Todotxt::Todo.new 'item due:2012-1-2 +project1 +project2 @context1 @context2'
     expect(todo.due).to eql(Chronic.parse('2 January 2012').to_date)
 
-    todo = Todotxt::Todo.new '42 folders'
+    todo = Todotxt::Todo.new '2011-31-1 42 folders'
     expect(todo.due).to be_nil
   end
 

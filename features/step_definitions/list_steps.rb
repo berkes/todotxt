@@ -1,3 +1,5 @@
+require "date"
+
 Then /^I should see all entries from the todofile with numbers$/ do
   step %{I should see all entries from the todofile named "todo.txt" with numbers}
 end

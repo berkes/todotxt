@@ -48,15 +48,15 @@ describe Todotxt::TodoList do
     end
 
     it 'fetches items for a certain date' do
-      @list.add '2012-12-12 item'
+      @list.add 'item due:2012-12-12'
       date = DateTime.parse('2012-12-12')
       expect(@list.on_date(date).count).to eql 1
       expect(@list.on_date(date)).to match([@list.todos.last])
     end
 
     it 'fetchs items before a cereain date' do
-      @list.add '2012-11-11 item'
-      @list.add '2012-12-12 item'
+      @list.add 'item due:2012-11-11'
+      @list.add 'item due:2012-12-12'
       date = DateTime.parse('2012-12-12')
       expect(@list.before_date(date).count).to eql 1
     end

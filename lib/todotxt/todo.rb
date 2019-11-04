@@ -28,7 +28,7 @@ module Todotxt
     # Get due date if set
     # @return [Date|Nil]
     def due
-      date = Chronic.parse(text.scan(DATE_REGEX).flatten[2])
+      date = Chronic.parse(text.scan(DATE_REGEX).flatten[1])
       date.nil? ? nil : date.to_date
     end
 
