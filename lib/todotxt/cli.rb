@@ -309,7 +309,7 @@ module Todotxt
       end
 
       unless opts[:simple]
-        puts "TODO: #{@list.count} items".color(:black).bright
+        puts "TODO: #{@list.count} items".bright
       end
     end
 

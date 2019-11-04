@@ -7,7 +7,7 @@ module Todotxt
       text = todo.to_s
 
       if todo.done
-        text = text.color(:black).bright
+        text = text.bright
       else
         text.gsub! PRIORITY_REGEX do |p|
           color = case p[1]
@@ -28,9 +28,9 @@ module Todotxt
         text.gsub! CONTEXT_REGEX, '\1'.color(:blue)
       end
 
-      ret = ''
+      ret = ""
 
-      ret << "#{line}. ".color(:black).bright
+      ret << "#{line}. ".bright
       ret << text.to_s
     end
 
