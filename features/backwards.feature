@@ -23,6 +23,6 @@ Feature: Backwards compatibility
     When I run `todotxt --file=done`
     Then it should pass with exactly:
       """
-      ERROR: You are using an old config, which has no support for mulitple files. Please update your configuration.
+      ERROR: You are using an old config, which has no support for multiple files. Please update your configuration.
 
       """
