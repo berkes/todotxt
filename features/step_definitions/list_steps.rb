@@ -28,6 +28,7 @@ end
 Then /^it should output "([^"]*)" brightly in "([^"]*)"$/ do |string, color|
   assert_partial_output(string.color(color.to_sym).bright, all_output)
 end
+
 Then /^it should output "([^"]*)" in "([^"]*)"$/ do |string, color|
   assert_partial_output(string.color(color.to_sym), all_output)
 end
