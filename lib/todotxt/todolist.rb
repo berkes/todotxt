@@ -6,7 +6,7 @@ module Todotxt
   class TodoList
     include Enumerable
 
-    attr_reader :todos
+    attr_accessor :todos
 
     # @INK: refactor TodoList and TodoFile
     #   So that TodoFile contains all IO ad List is no longer dependent on file.
