@@ -12,22 +12,23 @@ module Todotxt
     def initialize(options = {})
       @options = options
 
-      @config_file = options[:config_file] || Config.config_path
+      # Superclass will flunk if @config_file is set but not readable.
+      # But we need to be able to handle that situation. Hence we shadow
+      # the original @config_file and set it manually after initializing.
+      @try_config_file = options[:config_file] || Config.config_path
 
       if file_exists?
         super @config_file
         validate
       else
-        # Initialize mandatory values for `ParseConfig`
-        @params = {}
-        @groups = []
-        @splitRegex = '\s*=\s*'
-        @comments = [';']
+        super(nil)
       end
+
+      @config_file = @try_config_file
     end
 
     def file_exists?
-      File.exist? @config_file
+      File.exists? @config_file || @try_config_file
     end
 
     def files
